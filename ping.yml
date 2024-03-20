@@ -1,0 +1,17 @@
+---
+- name: Execute ping command
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    hostname: "{{ ping_hostname }}"
+    duration: "{{ ping_duration }}"
+
+  tasks:
+    - name: Ping host
+      command: ping -c {{ duration }} {{ hostname }}
+      register: ping_result
+
+    - name: Display ping output
+      debug:
+        msg: "{{ ping_result.stdout_lines }}"
