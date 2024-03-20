@@ -4,8 +4,8 @@
   connection: local
   gather_facts: no
   vars:
-    hostname: "{{ playbook_arguments.ping_hostname }}"
-    duration: "{{ playbook_arguments.ping_duration }}"
+    hostname: "{{ tower_webhook_payload.ping_hostname }}"
+    duration: "{{ tower_webhook_payload.ping_duration }}"
 
   tasks:
     - name: Ping host
