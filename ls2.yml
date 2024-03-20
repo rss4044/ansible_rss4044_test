@@ -1,0 +1,13 @@
+---
+- name: Execute ls command
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Run ls command
+      command: ls
+      register: ls_output
+
+    - name: Display ls output
+      debug:
+        msg: "{{ ls_output.stdout_lines }}"
